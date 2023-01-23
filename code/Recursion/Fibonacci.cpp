@@ -2,18 +2,18 @@
 #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
-//trust the function that it will give me sum of number from 1 to n so just get sum of number till n-1 and add n to it.
+//trust the function that it will give me fibonacci of n so what i do is add fibonacci of n-1 with n.
 int fibonacci(int n)
 {
-    if(n==0)return 1;
+    if(n==2)return 1;
     if(n==1)return 1;
-    int k = (n) + (fibonacci(n-1));
+    int k = fibonacci(n-1)  + fibonacci(n-2) ;
     return k;
 }
 int main() {
     // Write C++ code here
     // std::cout << "Hello world!";
-    cout<<fibonacci(5);
+    cout<<fibonacci(6);
 
     return 0;
 }
