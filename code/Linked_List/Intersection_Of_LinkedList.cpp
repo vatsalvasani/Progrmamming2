@@ -1,34 +1,34 @@
-// Write a program to find the node at which the intersection of two singly linked lists begins.
-
-// For example, the following two linked lists:
-
-
-// A:          a1 → a2
-//                    ↘
-//                      c1 → c2 → c3
-//                    ↗
-// B:     b1 → b2 → b3
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-ListNode* Solution::getIntersectionNode(ListNode* A, ListNode* B) {
-    unordered_map<ListNode*,int> mp;
+int linlen(ListNode* A){
+    int count=0;
     while(A!=NULL){
-        mp[A]++;
         A=A->next;
+        count++;
     }
-    while(B!=NULL)
-    {
-        mp[B]++;
-        if(mp[B]==2)return B;
-        B=B->next;
+    return count;
+}
+//use two pointers and iterate one of it for which length of list is greater.
+//now iterate both and we get the intersection node
+ListNode* Solution::getIntersectionNode(ListNode* A, ListNode* B) {
+    int l1=linlen(A);
+    int l2=linlen(B);
+    ListNode* a1=A;
+    ListNode* b1=B;
+    int dif=abs(l1-l2);
+    if(l1>l2){
+        while(dif--){
+            a1=a1->next;
+        } 
     }
-    return NULL;
-    
+    else{
+        while(dif--){
+            b1=b1->next;
+        } 
+    }
+    while(a1!=b1 and a1!=NULL and b1!=NULL){
+        a1=a1->next;
+        b1=b1->next;
+    }
+    if(a1==NULL) return a1;
+    if(b1==NULL) return b1;
+    return a1;
 }
