@@ -15,7 +15,7 @@ int main() {
     {
         for(int j=0;j<n;j++)
         {
-            //(1<<j because we want 0 2 4 not 0 1 2)
+            //(1<<j because we want  1 2 4 not 0 1 2)
             int k = (1<<j)&i;
             if(k!=0)cout<<v1[j];
         }
